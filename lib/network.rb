@@ -33,4 +33,16 @@ class Network
     end
     hash
   end
+
+  def shows_by_actor
+    all_the_actors = actors_by_show.values.flatten
+    unique_actors = all_the_actors.uniq
+    by_actor = Hash.new
+    unique_actors.map do |actor|
+      by_actor[actor] = actors_by_show.keys.sort_by do |character|
+        character.name
+      end.flatten
+    end
+    by_actor
+  end
 end
